@@ -6,7 +6,7 @@ dropdownBtn.forEach(function (dB) {
     let currentBtn = q.currentTarget;
     let drop = currentBtn.closest(".dropdown__item").querySelector(".dropdown__drop")
     
-    dropdownBtn. Each(function (dB) {
+    dropdownBtn.forEach(function (dB) {
       if (dB !== currentBtn) {
         dB.classList.remove("dropdown__btn--active")
       }
@@ -242,6 +242,17 @@ tabsBtn.forEach(function (elementTabs) {
 let galleryArtist = document.querySelectorAll(".gallery__swiper-slide");
 let galleryInfo = document.querySelectorAll(".gallery-content");
 let galleryInfoClose = document.querySelectorAll(".gallery-content__close");
+const overlay = document.querySelector(".overlay");
+
+function openOverlay() {
+  overlay.style.visibility = "visible";
+  overlay.style.bottom = "0";
+}
+
+ function closeOverlay() {
+  overlay.style.visibility = "hidden";
+  overlay.style.bottom = "-100%";
+}
 
 galleryArtist.forEach(function (elementArtist) {
   elementArtist.addEventListener("click", function (activ) {
@@ -251,16 +262,36 @@ galleryArtist.forEach(function (elementArtist) {
       .querySelector(`[data-targ="${info}"]`)
       .classList.add("gallery-content--activ");
     document.body.classList.toggle("stop-scroll");
+    openOverlay()
   });
 });
 
 galleryInfoClose.forEach(function (elClose) {
   elClose.addEventListener("click", function () {
     document.body.classList.remove("stop-scroll");
+    closeOverlay()
     galleryInfo.forEach(function (elInf) {
       elInf.classList.remove("gallery-content--activ");
     });
   });
+});
+
+overlay.addEventListener('click', function () {
+  document.body.classList.remove("stop-scroll");
+    closeOverlay()
+    galleryInfo.forEach(function (elInf) {
+      elInf.classList.remove("gallery-content--activ");
+  });
+})
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === "Escape") {
+    document.body.classList.remove("stop-scroll");
+    closeOverlay()
+    galleryInfo.forEach(function (elInf) {
+      elInf.classList.remove("gallery-content--activ");
+    });
+  }
 });
 
 ymaps.ready(init);
