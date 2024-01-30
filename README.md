@@ -7,4 +7,4 @@
 - _Кроссбраузерная верстка_
 - _Адаптивная вёрстка_
 
-## посмотреть можно по [ТУТ](https://jkrass210.github.io/Blanchard/)
+## [КЛИКАЙ ДЛЯ ПРОСМОТРА](https://jkrass210.github.io/Blanchard/)
